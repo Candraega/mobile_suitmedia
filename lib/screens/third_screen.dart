@@ -149,6 +149,6 @@ class _ThirdScreenState extends State<ThirdScreen> {
         onRefresh: _onRefresh,
         child: _buildUserList(),
       ),
-    );
+    ); 
   }
 }
