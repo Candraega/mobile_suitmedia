@@ -11,6 +11,8 @@ class SecondScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Tonton perubahan pada provider untuk mendapatkan data terbaru
     final appProvider = context.watch<AppProvider>();
+    // Ambil data gambar profil dari provider
+    final profileImage = appProvider.profileImage;
 
     return Scaffold(
       appBar: AppBar(
@@ -18,29 +20,58 @@ class SecondScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 1,
         shadowColor: Colors.black.withOpacity(0.2),
-        iconTheme: const IconThemeData(
-          color: Color(0xFF545454)
-        ),
+        iconTheme: const IconThemeData(color: Color(0xFF545454)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // a. Teks "Welcome"
-            const Text(
-              'Welcome',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            // BARIS BARU UNTUK FOTO PROFIL DAN WELCOME
+            Row(
+              children: [
+                // Menampilkan foto profil yang di-upload
+                CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.grey.shade300,
+                  backgroundImage: profileImage != null
+                      ? FileImage(profileImage)
+                      : null,
+                  child: profileImage == null
+                      ? Icon(
+                          Icons.person_outline,
+                          size: 30,
+                          color: Colors.grey.shade600,
+                        )
+                      : null,
+                ),
+                const SizedBox(width: 16),
+                // Teks Welcome dan Nama
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Welcome',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      appProvider.name,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            // b. Nama dinamis dari FirstScreen
-            Text(
-              appProvider.name,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            
+
             // Spacer untuk memberi ruang di tengah
             const Spacer(),
-            
+
             // Teks dinamis untuk nama pengguna yang dipilih
             Center(
               child: Text(
@@ -52,15 +83,14 @@ class SecondScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             // Spacer untuk mendorong tombol ke bawah
             const Spacer(),
-            
-            // c. Tombol "Choose a User"
+
+            // Tombol "Choose a User"
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                // d. Aksi untuk pindah ke layar ketiga
                 onPressed: () {
                   Navigator.pushNamed(context, '/third');
                 },
@@ -75,7 +105,7 @@ class SecondScreen extends StatelessWidget {
                 child: const Text('Choose a User'),
               ),
             ),
-          ], 
+          ],
         ),
       ),
     );
