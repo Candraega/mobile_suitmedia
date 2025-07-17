@@ -18,7 +18,7 @@ class AppProvider with ChangeNotifier {
   }
 
   void setProfileImage(File? image) {
-    _profileImage = image;
+    _profileImage = image; 
     notifyListeners();
   }
 
