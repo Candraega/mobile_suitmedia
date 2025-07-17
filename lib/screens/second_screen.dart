@@ -75,7 +75,7 @@ class SecondScreen extends StatelessWidget {
                 child: const Text('Choose a User'),
               ),
             ),
-          ],
+          ], 
         ),
       ),
     );
