@@ -13,7 +13,6 @@ class User {
     required this.avatar,
   });
 
-  // Factory constructor untuk membuat instance User dari JSON
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],

@@ -9,7 +9,6 @@ class SecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Tonton perubahan pada provider untuk mendapatkan data terbaru
     final appProvider = context.watch<AppProvider>();
     // Ambil data gambar profil dari provider
     final profileImage = appProvider.profileImage;
@@ -27,7 +26,6 @@ class SecondScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // BARIS BARU UNTUK FOTO PROFIL DAN WELCOME
             Row(
               children: [
                 // Menampilkan foto profil yang di-upload
@@ -69,7 +67,6 @@ class SecondScreen extends StatelessWidget {
               ],
             ),
 
-            // Spacer untuk memberi ruang di tengah
             const Spacer(),
 
             // Teks dinamis untuk nama pengguna yang dipilih

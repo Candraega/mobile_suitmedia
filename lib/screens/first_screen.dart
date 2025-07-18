@@ -69,20 +69,19 @@ class _FirstScreenState extends State<FirstScreen> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color(0xFFB0E0E6), Color(0xFF6495ED)], // LightCyan to CornflowerBlue
+                colors: [Color(0xFFB0E0E6), Color(0xFF6495ED)], 
               ),
             ),
           ),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(32.0),
-              child: SingleChildScrollView( // Ditambahkan agar tidak overflow saat keyboard muncul
+              child: SingleChildScrollView( 
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Lingkaran untuk upload foto profil
                     GestureDetector(
-                      onTap: _pickImage, // Panggil fungsi pilih gambar
+                      onTap: _pickImage,
                       child: CircleAvatar(
                         radius: 50,
                         backgroundColor: Colors.white70,
